@@ -5,8 +5,8 @@ A chat app based on graphql and appolo stack with user authentication and reacti
 ### Features
 
 1. Realtime Chat
-2. User authentication
-3. React to messages
+2. JWT User authentication
+3. React to messages with emojis
 4. All chat data is persisted in mysql database
 5. Chat with multiple clients
 6. Profile Update (todo)
