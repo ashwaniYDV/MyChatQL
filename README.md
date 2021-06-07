@@ -12,7 +12,7 @@ A chat app based on graphql and appolo stack with user authentication and reacti
 6. Profile Update (todo)
 
 
-### TECH STACK AND OTHERS:
+### Tech-stack and others:
 
 1. Graphql
 2. NodeJS
