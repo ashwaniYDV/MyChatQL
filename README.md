@@ -28,7 +28,8 @@ npm start
 - [x] React to messages with emojis
 - [x] All chat data is persisted in mysql database
 - [x] Chat with multiple users
-- [ ] Profile Updat
+- [x] Update your profile
+- [x] Profile image validation
 
 
 ### Tech-stack and others:
@@ -39,4 +40,5 @@ npm start
 - [x] Apollo-Client
 - [x] sequelize-cli
 - [x] MySql
-- [x] JWT 
+- [x] JWT
+- [x] React-Bootstrap 
