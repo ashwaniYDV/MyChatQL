@@ -34,6 +34,11 @@ const GET_MESSAGES = gql`
   }
 `
 
+const SELECT_A_FRIEND = 'Select a friend'
+const LOADING_TEXT = 'Loading...'
+const YOU_ARE_CONNECTED = 'You are now connected! send your first message!'
+
+
 export default function Messages() {
   const { users } = useMessageState()
   const dispatch = useMessageDispatch()
@@ -82,9 +87,9 @@ export default function Messages() {
 
   let selectedChatMarkup
   if (!messages && !messagesLoading) {
-    selectedChatMarkup = <p className="info-text">Select a friend</p>
+    selectedChatMarkup = <p className="info-text">{ SELECT_A_FRIEND }</p>
   } else if (messagesLoading) {
-    selectedChatMarkup = <p className="info-text">Loading..</p>
+    selectedChatMarkup = <p className="info-text">{ LOADING_TEXT }</p>
   } else if (messages.length > 0) {
     selectedChatMarkup = messages.map((message, index) => (
       <Fragment key={message.uuid}>
@@ -98,9 +103,7 @@ export default function Messages() {
     ))
   } else if (messages.length === 0) {
     selectedChatMarkup = (
-      <p className="info-text">
-        You are now connected! send your first message!
-      </p>
+      <p className="info-text">{ YOU_ARE_CONNECTED }</p>
     )
   }
 

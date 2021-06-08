@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { gql, useMutation } from '@apollo/client'
-import { Navbar, Nav, Button, Modal, Form, Spinner, Image } from 'react-bootstrap'
+import { Navbar, Nav, Button, Modal, Form, Spinner, Col, Image as BootStrapImage } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useAuthDispatch, useAuthState } from '../context/auth'
+import { imageExists } from '../util'
 
 const UPDATE_PROFILE = gql`
   mutation updateProfile($url: String!) {
@@ -25,6 +26,7 @@ const MyModal = ({ show, handleClose }) => {
             console.log(data)
             dispatch({ type: 'UPDATE_PROFILE', payload: { imageUrl: url } })
             setUrl('')
+            setErrors('')
             handleClose()
         }
       })
@@ -32,10 +34,17 @@ const MyModal = ({ show, handleClose }) => {
     const submitProfileForm = (e) => {
         e.preventDefault()
         if (!url || !url.trim()) {
+            setErrors("Enter valid URL")
             return;
         }
-        // mutation for profileUpdate
-        updateProfile({ variables: { url } })
+        imageExists(url, async function(exists) {
+            if(exists) {
+                // mutation for profileUpdate
+                updateProfile({ variables: { url } })
+            } else {
+              setErrors("Enter valid URL")
+            }
+        });
     }
 
     return (
@@ -47,7 +56,9 @@ const MyModal = ({ show, handleClose }) => {
                 <Modal.Body>
                 <Form onSubmit={submitProfileForm}>
                     <Form.Group>
-                        <Form.Label>Profile Url</Form.Label>
+                        <Form.Label>
+                            {errors ? <p className='text-danger'>Enter valid profile url!</p> : "Enter profile url"}
+                        </Form.Label>
                         <Form.Control
                             type="text"
                             value={url}
@@ -102,7 +113,7 @@ const NavBar = () => {
                         <>
                             <Nav.Link onClick={handleShow}>Profile</Nav.Link>
                             <Nav.Link onClick={logout}>Logout</Nav.Link>
-                            <Image src={user.imageUrl} width={'40px'} height={'40px'} roundedCircle />
+                            <BootStrapImage src={user.imageUrl || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y'} width={'40px'} height={'40px'} roundedCircle />
                         </>
                         )
                     }
