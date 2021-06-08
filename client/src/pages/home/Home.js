@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from 'react'
-import { Row, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Row } from 'react-bootstrap'
 import { gql, useSubscription } from '@apollo/client'
 
 import { useAuthDispatch, useAuthState } from '../../context/auth'
@@ -8,6 +7,7 @@ import { useMessageDispatch } from '../../context/message'
 
 import Users from './Users'
 import Messages from './Messages'
+import NavBar from './NavBar'
 
 const NEW_MESSAGE = gql`
   subscription newMessage {
@@ -86,23 +86,10 @@ export default function Home({ history }) {
     }
   }, [reactionError, reactionData])
 
-  const logout = () => {
-    authDispatch({ type: 'LOGOUT' })
-    window.location.href = '/login'
-  }
-
   return (
     <Fragment>
       <Row className="bg-white justify-content-around mb-1">
-        <Link to="/login">
-          <Button variant="link">Login</Button>
-        </Link>
-        <Link to="/register">
-          <Button variant="link">Register</Button>
-        </Link>
-        <Button variant="link" onClick={logout}>
-          Logout
-        </Button>
+        <NavBar />
       </Row>
       <Row className="bg-white">
         <Users />

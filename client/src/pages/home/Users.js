@@ -1,6 +1,6 @@
 import React from 'react'
 import { gql, useQuery } from '@apollo/client'
-import { Col, Image } from 'react-bootstrap'
+import { Col, Image, Spinner } from 'react-bootstrap'
 import classNames from 'classnames'
 
 import { useMessageDispatch, useMessageState } from '../../context/message'
@@ -35,7 +35,9 @@ export default function Users() {
 
   let usersMarkup
   if (!users || loading) {
-    usersMarkup = <p>Loading..</p>
+    usersMarkup = <p style={{textAlign: 'center'}}><Spinner animation="border" role="status">
+                    <span className="visually-hidden"></span>
+                  </Spinner></p>
   } else if (users.length === 0) {
     usersMarkup = <p>No users have joined yet</p>
   } else if (users.length > 0) {
