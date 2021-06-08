@@ -40,6 +40,7 @@ export default function Home({ history }) {
   const messageDispatch = useMessageDispatch()
 
   const { user } = useAuthState()
+  console.log(user)
 
   const { data: messageData, error: messageError } = useSubscription(
     NEW_MESSAGE

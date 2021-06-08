@@ -35,9 +35,9 @@ export default function Users() {
 
   let usersMarkup
   if (!users || loading) {
-    usersMarkup = <p style={{textAlign: 'center'}}><Spinner animation="border" role="status">
+    usersMarkup = <div style={{textAlign: 'center'}}><Spinner animation="border" role="status">
                     <span className="visually-hidden"></span>
-                  </Spinner></p>
+                  </Spinner></div>
   } else if (users.length === 0) {
     usersMarkup = <p>No users have joined yet</p>
   } else if (users.length > 0) {
