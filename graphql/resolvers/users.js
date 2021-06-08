@@ -66,7 +66,9 @@ module.exports = {
           throw new UserInputError('password is incorrect', { errors })
         }
 
-        const token = jwt.sign({ username }, process.env.JWT_SECRET, {
+        let imageUrl = user.imageUrl
+
+        const token = jwt.sign({ username, imageUrl }, process.env.JWT_SECRET, {
           expiresIn: 60 * 60,
         })
 
@@ -131,6 +133,25 @@ module.exports = {
           err.errors.forEach((e) => (errors[e.path] = e.message))
         }
         throw new UserInputError('Bad input', { errors })
+      }
+    },
+
+    updateProfile: async (parent, { url }, { user }) => {
+      try {
+        if (!user) throw new AuthenticationError('Unauthenticated')
+        
+        // Validate input data
+        if (url.trim() === '') {
+          throw new UserInputError('Profile URL is empty')
+        }
+
+        const res = await User.update({ imageUrl: url }, { where: { username: user.username } });
+        return {
+          imageUrl: url
+        }
+      } catch (err) {
+        console.log(err)
+        throw err
       }
     },
   },

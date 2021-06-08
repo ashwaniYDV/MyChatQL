@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 
 import { useAuthDispatch } from '../context/auth'
 
+import NavBar from './NavBar'
+
 const LOGIN_USER = gql`
   query login($username: String!, $password: String!) {
     login(username: $username, password: $password) {
@@ -12,6 +14,7 @@ const LOGIN_USER = gql`
       email
       createdAt
       token
+      imageUrl
     }
   }
 `
@@ -40,47 +43,52 @@ export default function Register(props) {
   }
 
   return (
-    <Row className="bg-white py-5 justify-content-center">
-      <Col sm={8} md={6} lg={4}>
-        <h1 className="text-center">Login</h1>
-        <Form onSubmit={submitLoginForm}>
-          <Form.Group>
-            <Form.Label className={errors.username && 'text-danger'}>
-              {errors.username ?? 'Username'}
-            </Form.Label>
-            <Form.Control
-              type="text"
-              value={variables.username}
-              className={errors.username && 'is-invalid'}
-              onChange={(e) =>
-                setVariables({ ...variables, username: e.target.value })
-              }
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label className={errors.password && 'text-danger'}>
-              {errors.password ?? 'Password'}
-            </Form.Label>
-            <Form.Control
-              type="password"
-              value={variables.password}
-              className={errors.password && 'is-invalid'}
-              onChange={(e) =>
-                setVariables({ ...variables, password: e.target.value })
-              }
-            />
-          </Form.Group>
-          <div className="text-center">
-            <Button variant="success" type="submit" disabled={loading}>
-              {loading ? 'loading..' : 'Login'}
-            </Button>
-            <br />
-            <small>
-              Don't have an account? <Link to="/register">Register</Link>
-            </small>
-          </div>
-        </Form>
-      </Col>
-    </Row>
+    <>
+      <Row className="bg-white justify-content-around mb-1">
+          <NavBar />
+      </Row>
+      <Row className="bg-white py-5 justify-content-center">
+        <Col sm={8} md={6} lg={4}>
+          <h1 className="text-center">Login</h1>
+          <Form onSubmit={submitLoginForm}>
+            <Form.Group>
+              <Form.Label className={errors.username && 'text-danger'}>
+                {errors.username ?? 'Username'}
+              </Form.Label>
+              <Form.Control
+                type="text"
+                value={variables.username}
+                className={errors.username && 'is-invalid'}
+                onChange={(e) =>
+                  setVariables({ ...variables, username: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label className={errors.password && 'text-danger'}>
+                {errors.password ?? 'Password'}
+              </Form.Label>
+              <Form.Control
+                type="password"
+                value={variables.password}
+                className={errors.password && 'is-invalid'}
+                onChange={(e) =>
+                  setVariables({ ...variables, password: e.target.value })
+                }
+              />
+            </Form.Group>
+            <div className="text-center">
+              <Button variant="success" type="submit" disabled={loading}>
+                {loading ? 'loading..' : 'Login'}
+              </Button>
+              <br />
+              <small>
+                Don't have an account? <Link to="/register">Register</Link>
+              </small>
+            </div>
+          </Form>
+        </Col>
+      </Row>
+    </>
   )
 }

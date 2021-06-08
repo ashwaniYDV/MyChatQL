@@ -25,6 +25,11 @@ const authReducer = (state, action) => {
         ...state,
         user: action.payload,
       }
+    case 'UPDATE_PROFILE':
+        return {
+          ...state,
+          user: {...user, imageUrl: action.payload.imageUrl},
+        }
     case 'LOGOUT':
       localStorage.removeItem('token')
       return {
@@ -38,6 +43,7 @@ const authReducer = (state, action) => {
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, { user })
+  console.log(user)
 
   return (
     <AuthDispatchContext.Provider value={dispatch}>

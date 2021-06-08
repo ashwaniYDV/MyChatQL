@@ -7,7 +7,7 @@ import { useMessageDispatch } from '../../context/message'
 
 import Users from './Users'
 import Messages from './Messages'
-import NavBar from './NavBar'
+import NavBar from '../NavBar'
 
 const NEW_MESSAGE = gql`
   subscription newMessage {
@@ -40,7 +40,6 @@ export default function Home({ history }) {
   const messageDispatch = useMessageDispatch()
 
   const { user } = useAuthState()
-  console.log(user)
 
   const { data: messageData, error: messageError } = useSubscription(
     NEW_MESSAGE

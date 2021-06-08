@@ -9,6 +9,9 @@ module.exports = gql`
     imageUrl: String
     latestMessage: Message
   }
+  type ProfileUpdate {
+    imageUrl: String!
+  }
   type Message {
     uuid: String!
     content: String!
@@ -36,6 +39,7 @@ module.exports = gql`
       password: String!
       confirmPassword: String!
     ): User!
+    updateProfile(url: String!): ProfileUpdate!
     sendMessage(to: String!, content: String!): Message!
     reactToMessage(uuid: String!, content: String!): Reaction!
   }
