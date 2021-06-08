@@ -42,3 +42,7 @@ npm start
 - [x] MySql
 - [x] JWT
 - [x] React-Bootstrap 
+
+## Screens
+![login screen](./screens/mychatql.gif)
+![chat emoji picker screen](./screens/mychatql2.gif)
