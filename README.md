@@ -2,22 +2,41 @@
 
 A chat app based on graphql and appolo stack with user authentication and reaction support
 
-### Features
+### Usage
+```
+# Install sequelize-cli globally
+npm install - g sequelize-cli
 
-1. Realtime Chat
-2. JWT User authentication
-3. React to messages with emojis
-4. All chat data is persisted in mysql database
-5. Chat with multiple clients
-6. Profile Update (todo)
+# Install dependencies in server (root directory) and client (client directory)
+npm install
+
+# Create a MySQL database using phpmadmin/terminal by the name of chatql
+
+# Migrate all the models (tables) to the created database
+sequelize db:migrate
+
+# Start the graphql server and websocket connection
+npm start
+
+# Run the react app client
+npm start
+```
+
+## Features
+- [x] Realtime Chat
+- [x] JWT User authentication
+- [x] React to messages with emojis
+- [x] All chat data is persisted in mysql database
+- [x] Chat with multiple users
+- [ ] Profile Updat
 
 
 ### Tech-stack and others:
-
-1. Graphql
-2. NodeJS
-3. Apollo-Server
-4. React
-5. Apollo-Client
-6. MySql
-7. JWT
+- [x] Graphql
+- [x] NodeJS
+- [x] Apollo-Server
+- [x] React
+- [x] Apollo-Client
+- [x] sequelize-cli
+- [x] MySql
+- [x] JWT 
