@@ -46,3 +46,10 @@ npm start
 ## Screens
 ![login screen](./screens/mychatql.gif)
 ![chat emoji picker screen](./screens/mychatql2.gif)
+
+
+
+ <br/>
+
+#### Inspiration from
+[https://classsed.com/](https://classsed.com/)
