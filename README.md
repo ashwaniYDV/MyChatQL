@@ -1,6 +1,6 @@
 # MyChatQL
 
-A chat app based on graphql and appolo stack with user authentication and reaction support
+A chat app based on graphql and apollo stack with user authentication and reaction support
 
 ### Usage
 ```
