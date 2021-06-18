@@ -18,7 +18,7 @@ sequelize db:migrate
 # Start the graphql server and websocket connection
 npm start
 
-# Run the react app client
+# From client folder run the react app
 npm start
 ```
 
