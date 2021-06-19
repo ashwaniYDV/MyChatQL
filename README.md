@@ -2,6 +2,11 @@
 
 A chat app based on graphql and apollo stack with user authentication and reaction support
 
+## Screens
+![login screen](./screens/mychatql.gif)
+![chat emoji picker screen](./screens/mychatql2.gif)
+
+
 ### Usage
 ```
 # Install sequelize-cli globally
@@ -42,14 +47,6 @@ npm start
 - [x] MySql
 - [x] JWT
 - [x] React-Bootstrap 
-
-## Screens
-![login screen](./screens/mychatql.gif)
-![chat emoji picker screen](./screens/mychatql2.gif)
-
-
-
- <br/>
 
 #### Inspiration from
 [https://classsed.com/](https://classsed.com/)
