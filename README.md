@@ -8,6 +8,9 @@ A chat app based on graphql and apollo stack with user authentication and reacti
 
 
 ### Usage
+
+(All commands need to be run from root directory unless specified)
+
 ```
 # Install sequelize-cli globally
 npm install - g sequelize-cli
