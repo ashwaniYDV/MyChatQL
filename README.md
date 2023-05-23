@@ -52,4 +52,4 @@ npm start
 - [x] React-Bootstrap 
 
 #### Inspiration from
-[https://classsed.com/](https://classsed.com/)
+[classsed](https://www.youtube.com/c/Classsed)
